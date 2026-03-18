@@ -2,7 +2,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from typing import List, Dict
 import math
-from openai import OpenAI
+import os
+from openai import AzureOpenAI
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -10,7 +11,9 @@ load_dotenv(override=True)
 
 class TokenPredictor:
     def __init__(self, model_name: str):
-        self.client = OpenAI()
+        self.client = AzureOpenAI(
+            api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2024-08-01-preview")
+        )
         self.messages = []
         self.predictions = []
         self.model_name = model_name

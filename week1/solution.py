@@ -2,7 +2,7 @@
 Website summarizer using Ollama instead of OpenAI.
 """
 
-from openai import OpenAI
+from openai import AzureOpenAI
 from scraper import fetch_website_contents
 
 OLLAMA_BASE_URL = "http://localhost:11434/v1"
